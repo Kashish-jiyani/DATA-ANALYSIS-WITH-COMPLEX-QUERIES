@@ -47,6 +47,22 @@ Subquery:
 Calculates the average salary dynamically and uses it to filter employees.
 
 Ideal for relative comparisons.
+/* USE WINDOW FUNCTIONS,SUBQUERIES, AND CTES (COMMON TABLE EXPRESSIONS) FOR ADVANCED DATA ANALYSIS */
+
+/* 1. Window Function Query */
+SELECT name, salary, RANK() OVER (ORDER BY salary DESC) AS rankwise
+FROM employees;
+
+
+/* 2. Subquery */
+SELECT name, salary
+FROM employees
+WHERE salary > (SELECT AVG(salary) FROM employees);
+
+/* 3. CTE (Common Table Expression) */
+SELECT name, salary
+FROM employees
+WHERE salary > 50000;
 
 CTE(COMMON TABLE EXPRESSIONS):
 
